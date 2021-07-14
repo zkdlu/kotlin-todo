@@ -3,16 +3,23 @@ package com.zkdlu.todo
 import org.springframework.stereotype.Service
 
 @Service
-class TodoServiceImpl : TodoService {
+class TodoServiceImpl(private val todoRepository: TodoRepository
+) : TodoService {
     override fun getTodos(): List<TodoResponse> {
-        TODO("Not yet implemented")
+        val todos = todoRepository.findAll()
+        return todos.map { t -> TodoResponse(
+                id = t.id,
+                content = t.content
+        ) }
     }
 
     override fun saveTodo(todoRequest: TodoRequest): TodoResponse {
-        TODO("Not yet implemented")
+        val todo: Todo = Todo(content = todoRequest.content)
+        todoRepository.save(todo)
+        return TodoResponse(id = todo.id, content = todo.content)
     }
 
     override fun deleteTodo(id: Long) {
-        TODO("Not yet implemented")
+        todoRepository.deleteById(id)
     }
 }
