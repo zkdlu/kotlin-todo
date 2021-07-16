@@ -6,9 +6,17 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class Todo(
+class Todo(content: String) {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        val id: Long? = null,
-        val content: String
-)
+        var id: Long? = null
+                private set
+        var content: String = content
+                private set
+        var done: Boolean = false
+                private set
+
+        fun end() : Unit {
+                done = true
+        }
+}

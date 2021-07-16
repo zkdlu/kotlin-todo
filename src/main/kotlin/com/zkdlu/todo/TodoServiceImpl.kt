@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service
 class TodoServiceImpl(private val todoRepository: TodoRepository
 ) : TodoService {
     override fun getTodos(): List<TodoResponse> {
+        val todo = Todo(content = "test")
+
         val todos = todoRepository.findAll()
         return todos.map { t -> TodoResponse(
                 id = t.id,

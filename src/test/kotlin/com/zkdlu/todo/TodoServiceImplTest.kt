@@ -19,8 +19,8 @@ internal class TodoServiceImplTest(
     @Test
     fun getTodos() {
         //given
-        val givenTodos: MutableList<Todo> = mutableListOf(Todo(1L, "할 일 1"))
-        val expectedTodoResponses: List<TodoResponse> = listOf(TodoResponse(1L, "할 일 1"))
+        val givenTodos: MutableList<Todo> = mutableListOf(Todo("할 일 1"))
+        val expectedTodoResponses: List<TodoResponse> = listOf(TodoResponse(null, "할 일 1"))
 
         //when
         spyTodoRepository.findAll_returnValue = givenTodos

@@ -7,9 +7,9 @@ import org.springframework.data.domain.Sort
 import java.util.*
 
 class SpyTodoRepository : TodoRepository {
-    public var deleteById_wasCalled: Boolean = false
-    public var save_wasCalled: Boolean = false
-    public lateinit var findAll_returnValue: MutableList<Todo>
+    var deleteById_wasCalled: Boolean = false
+    var save_wasCalled: Boolean = false
+    lateinit var findAll_returnValue: MutableList<Todo>
 
     override fun <S : Todo?> save(entity: S): S {
         save_wasCalled = true
